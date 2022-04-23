@@ -56,6 +56,18 @@ function ProductDetail() {
     }
   };
 
+  const postQna = async () => {
+    try {
+      const res = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/product/detail/qna/id`,
+        { idx: id }
+      );
+      setColor(res.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   console.log(commonList);
   return (
     <div className="productDetail">
@@ -124,7 +136,15 @@ function ProductDetail() {
           </div>
         </Tab>
         <Tab eventKey="MyFavorite" title={`상품 문의`}>
-          <span>상품 문의</span>
+          <div className="qnaform">
+            <input
+              type="text"
+              placeholder="상품 문의 입력..."
+              className="qnainput"
+            ></input>
+            &nbsp;&nbsp;
+            <button className="qnabutton">등록</button>
+          </div>
         </Tab>
       </Tabs>
     </div>

@@ -61,6 +61,7 @@ productRouter.get(
       ],
       where: { idx: id },
     });
+    console.log(data);
     req.data = data;
     next();
   },
@@ -95,6 +96,10 @@ async function createOrDelete(pid, uid) {
     return "secondary";
   }
 }
+
+/*productRouter.post("/detail/qna/id", async(req, res) => {
+  const 
+})*/
 
 productRouter.get("/pay", async (req, res, next) => {
   const isTrue = req.isAuthenticated();

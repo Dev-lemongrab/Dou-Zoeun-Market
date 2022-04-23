@@ -16,8 +16,8 @@ env.config();
 const app = express();
 const port = process.env.PORT;
 
-app.use(express.json({ limit : "100mb" }));
-app.use(express.urlencoded({ limit:"100mb", extended: false }));
+app.use(express.json({ limit: "100mb" }));
+app.use(express.urlencoded({ limit: "100mb", extended: false }));
 //app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
@@ -49,19 +49,9 @@ app.use("/product", ProductRouter);
 app.use("/mypage", MyPageRouter);
 app.use("/new", ProductFormRouter);
 
-app.get("/category", (req, res) => {
-  conn.query(
-    "select p.categoryID, c.name from productRouter p, category c where p.idx=c.idx;",
-    (err, rows, fields) => {
-      console.log(rows);
-      res.json(rows);
-    }
-  );
-});
-
 //db 자동 연결
 db.sequelize
-  .sync({ force:false}) //true이면 매번 테이블 새로 생성
+  .sync({ force: false }) //true이면 매번 테이블 새로 생성
   .then(() => {
     app.listen(port, () => console.log(`server is running on ${port}`));
   });
