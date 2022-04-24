@@ -287,7 +287,7 @@ function ProductForm() {
           <Form.Label className="label">설명</Form.Label>
           <FloatingLabel
             controlId="floatingTextarea2"
-            label="상품 설명을 입력해주세요.(10글자 이상)"
+            // label="상품 설명을 입력해주세요.(10글자 이상)"
           >
             <Form.Control
               as="textarea"

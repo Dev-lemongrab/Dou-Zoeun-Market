@@ -1,12 +1,14 @@
 import express from "express";
 import Product from "../models/Product.js";
 import ProductImg from "../models/ProductImg.js";
+import multer from "multer";
+const upload = multer({ dest: "images/" });
 
 const productFormRouter = express.Router();
 
 //await는 async안에서 사용할수 있다
 //await를 사용해야 동기적으로 보낼수 있다
-productFormRouter.post("/", async (req, res) => {
+productFormRouter.post("/", async (req, res, next) => {
   console.log(req.body);
   const title = req.body.title;
   const category = req.body.category;
@@ -34,13 +36,7 @@ productFormRouter.post("/", async (req, res) => {
 
   //imgs = [ Img, img ]
   //img = { id, imageData }
-  for (let i = 0; i < imgs.length; i++) {
-    // ProductImg.create({
-    //   imgUrl: imgs[i].ImgData,
-    // });
-    // console.log("??");
-    // console.log(imgs[i]);
-  }
+
   /*
     imgs.forEach(element => {
          ProductImg.create({
@@ -50,7 +46,6 @@ productFormRouter.post("/", async (req, res) => {
     */
   //res.send를 사용해서 클라이언트로 db에서 받은 데이터를 전송
   //res.send(await createOrDelete(id, 1)); 상품수정시 클라이언트에 전송
-
   res.redirect(process.env.CLIENT_URL_PORT);
 });
 
