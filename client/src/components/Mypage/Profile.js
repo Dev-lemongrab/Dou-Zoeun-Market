@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Link, Router } from "react-router-dom";
+import axios from "axios";
 import "bootstrap";
 import "../../css/Profile.scss";
 
@@ -20,8 +21,9 @@ export default function Profile() {
     };
     reader.readAsDataURL(e.target.files[0]);
 
-    await axios.post(`${process.env.REACT_APP_BASE_URL}/mypage/img`,
-        {img : profileImg})
+    await axios.post(`${process.env.REACT_APP_BASE_URL}/mypage/img`, {
+      img: profileImg,
+    });
   };
 
   return (

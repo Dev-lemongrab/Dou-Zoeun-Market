@@ -23,10 +23,10 @@ const QnA = sequelize.define(
   }
 );
 
-QnA.associate = () => {
-  QnA.hasOne(User, { foreignKey: "writer", sourceKey: "idx" });
-  QnA.hasOne(User, { foreignKey: "reader", sourceKey: "idx" });
-  QnA.hasone(Product, { foreignKey: "productId", sourceKey: "idx" });
-};
+// QnA.associate = () => {
+//   QnA.hasOne(User, { foreignKey: "writer", sourceKey: "idx" });
+//   QnA.hasOne(User, { foreignKey: "reader", sourceKey: "idx" });
+//   QnA.hasone(Product, { foreignKey: "productId", sourceKey: "idx" });
+// };
 
 export default QnA;

@@ -15,6 +15,7 @@ function ProductDetail() {
   const [commonList, setCommonList] = useState();
   const [cName, setCName] = useState("");
   const { id } = useParams();
+  const payUrl = `/pay/${id}`;
   let userId = "";
   let category = "";
 
@@ -117,7 +118,7 @@ function ProductDetail() {
               찜하기
             </Button>
             &nbsp;
-            <Link to="/pay">
+            <Link to={payUrl}>
               <Button variant="primary">결제하기</Button>
             </Link>
           </div>

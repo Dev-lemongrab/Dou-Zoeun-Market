@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -24,17 +24,25 @@ const Container = styled.div`
 `;
 
 // eslint-disable-next-line react/prop-types
-const ProductItem = ({ deliver , urlName}) => {
+const ProductItem = ({ deliver, urlName }) => {
   // eslint-disable-next-line react/prop-types
   const { idx, ProductImgs, title, price } = deliver;
 
-  const[product, setProduct] = useState({});
+  const [product, setProduct] = useState({});
 
-  useEffect(()=>{
-      urlName === "/mypage/favorite"
-    ? setProduct({idx : deliver.Product.idx, title : deliver.Product.title, price : deliver.Product.price})
-          : setProduct({idx : deliver.idx, title : deliver.title, price : deliver.price})
-  },[product]);
+  useEffect(() => {
+    urlName === "/mypage/favorite"
+      ? setProduct({
+          idx: deliver.Product.idx,
+          title: deliver.Product.title,
+          price: deliver.Product.price,
+        })
+      : setProduct({
+          idx: deliver.idx,
+          title: deliver.title,
+          price: deliver.price,
+        });
+  }, []);
 
   return (
     <Container>
