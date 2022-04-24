@@ -9,13 +9,14 @@ import MyPageRouter from "./Routers/MyPageRouter.js";
 import LoginRouter from "./Routers/LoginRouter.js";
 import LogoutRouter from "./Routers/LogoutRouter.js";
 import ProductFormRouter from "./Routers/ProductFormRouter.js";
+import AuthRouter from "./Routers/AuthRouter.js";
 import db from "./models/db.js";
 
 env.config();
 
 const app = express();
 const port = process.env.PORT;
-
+app.use(cookieParser);
 app.use(express.json({ limit: "100mb" }));
 app.use(express.urlencoded({ limit: "100mb", extended: false }));
 //app.use(express.json());
@@ -43,6 +44,7 @@ passport.deserializeUser(function (id, done) {
 });
 
 //라우팅
+app.use("/isAuth", AuthRouter);
 app.use("/auth", LoginRouter);
 app.use("/logout", LogoutRouter);
 app.use("/product", ProductRouter);

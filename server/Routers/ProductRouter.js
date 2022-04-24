@@ -101,17 +101,59 @@ async function createOrDelete(pid, uid) {
   const 
 })*/
 
-productRouter.get("/pay", async (req, res, next) => {
-  const isTrue = req.isAuthenticated();
-  console.log(isTrue); //undefined  //true
-  res.json(
-    await Common.findAll({
+productRouter.get(
+  "/pay/:id",
+  async (req, res, next) => {
+    //항목 리스트 부르기
+    //회원정보 부르기
+    //상품정보 부르기
+    const data = await Common.findAll({
       where: {
         paysort: { [Op.lte]: 5 },
       },
       order: [["paysort", "ASC"]],
-    })
-  );
-});
+    });
+    req.data = data;
+    next();
+  },
+  async (req, res, next) => {
+    const { id } = req.params;
+    console.log(id);
+    const prodInfo = await Product.findOne({
+      attributes: [
+        "title",
+        "price",
+        "locationX",
+        "locationY",
+        "content",
+        "productStatus",
+        "exchange",
+        "shippingincluded",
+        "address",
+      ],
+      include: [
+        {
+          model: ProductImg,
+          attributes: ["imgUrl"],
+          required: true,
+        },
+      ],
+      where: { idx: id },
+    });
+    console.log("+++++", prodInfo, "+++++");
+    req.prodInfo = prodInfo;
+    res.send([data, prodInfo]);
+  }
+  // async (req, res, next) => {
+  //   const data = req.data;
+  //   const prodInfo = req.prodInfo;
+  //   const email = req.cookies;
+  //   console.log(email);
+  //   const member = await User.findOne({
+  //     where: { email: email },
+  //   });
+  //   res.send([data, prodInfo, member]);
+  // }
+);
 
 export default productRouter;
