@@ -128,7 +128,6 @@ productRouter.delete("/detail/qna/:idx", async (req, res) => {
   res.send(idx);
 });
 
-
 productRouter.get(
   "/pay/:id/:email",
   async (req, res, next) => {

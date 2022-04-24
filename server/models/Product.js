@@ -45,7 +45,13 @@ const Product = sequelize.define(
       type: DataTypes.STRING(4),
     },
     address: {
-      type: DataTypes.STRING(64),
+      type: DataTypes.STRING(634),
+    },
+    categoryId: {
+      type: DataTypes.INTEGER,
+    },
+    seller: {
+      type: DataTypes.INTEGER,
     },
   },
 

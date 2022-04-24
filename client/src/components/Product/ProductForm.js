@@ -10,9 +10,9 @@ import axios from "axios";
 
 function ProductForm() {
   const getAuthInfo = useSelector((state) => state);
-
+  const userIdx = getAuthInfo.user.idx;
   const count = useRef(0);
-
+  console.log(userIdx);
   //이미지외 입력 객체
   const [texts, setTexts] = useState({
     title: "", // 제목
@@ -24,6 +24,7 @@ function ProductForm() {
     shippingIncluded: "", // 배송비 : 미포함, 포함
     content: "", // 설명
     imgs: [], // 이미지 배열
+    seller: `${userIdx}`,
   });
 
   //previewImgs는 이미지 객체 ex) [ {Img객체 , Img객체}]
@@ -32,6 +33,8 @@ function ProductForm() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [address, setAddress] = useState("");
   const [status, setStatus] = useState("");
+
+  // setTexts({ ...texts, seller: userIdx });
 
   useEffect(() => {
     setTexts({
@@ -101,7 +104,7 @@ function ProductForm() {
     //setStatus(postForm());
     postForm();
     fimgs();
-    window.open(`http://localhost:3000/`, "_blank");
+    window.location.href = `http://localhost:3000/`;
   }
   function fimgs() {
     console.log(texts);
@@ -148,6 +151,12 @@ function ProductForm() {
             placeholder="제목"
             name="title"
             onChange={onChange}
+          />
+          <input
+            type={"hidden"}
+            name="seller"
+            onChange={onChange}
+            value={getAuthInfo.idx}
           />
           <Form.Text className="text-muted">
             한글자 이상 40글자 이내로 작성해주세요

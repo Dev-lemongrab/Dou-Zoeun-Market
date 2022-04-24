@@ -10,7 +10,6 @@ import ProductForm from "./components/Product/ProductForm";
 import "./App.css";
 import Error403 from "./components/ErrorPage/Error403";
 
-
 function App() {
   const getAuthInfo = useSelector((state) => state);
 

@@ -1,21 +1,25 @@
 Form {
-    width: 60%;
-    margin: 0 auto;
+  div {
+    margin-top: 0px;
+  }
+  width: 60%;
+  margin: 0 auto;
+  margin-bottom: 10%;
 }
 
 .category {
-    display: inline-block;
-    width: 30%;
-    height: 50px;
-    border: 1px solid silver;
+  display: inline-block;
+  width: 100%;
+  height: 10%;
+  border: 1px solid silver;
 }
 
-.text_area{
-    width: 30%;
-    height: 100px;
+.text_area {
+  width: 30%;
+  height: 100px;
 }
 
-.label{
-    font-size: 1.3em;
-    font-weight: bold;
+.label {
+  font-size: 1.3em;
+  font-weight: bold;
 }
