@@ -21,8 +21,16 @@ export default function Comment(){
     }, []);
 
     return(
-        <div >Comment
-            <Comment/>
+        <div >
+            {comments && comments.map((item, id) => (
+                <div>
+                    <div key={id}>{item.Product.title} 구매 후기</div>
+                    <br></br>
+                    <div>{item.content}</div><br/>
+                    <span>별점 : {item.rate}</span>
+                    <hr/>
+                </div>
+            ))}
         </div>
     )
 }

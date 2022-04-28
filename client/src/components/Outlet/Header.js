@@ -5,6 +5,8 @@ import Login from "../Payment/Login";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import MyPage from "../Mypage/MyPage";
+import "../../css/SearchBar.scss";
+import { Form } from "react-bootstrap";
 
 const Header = () => {
   const getAuthInfo = useSelector((state) => state);
@@ -29,21 +31,33 @@ const Header = () => {
     <header>
       <div className="logo-container">
         <img src="../logo.png" alt="douzoeunLogo" className="logo"></img>
-        <div className="theme">Dou-Zoeun 마켓</div>
+        <div className="theme">
+          <Link to="/" className="Name">
+            Dou Market zone
+          </Link>{" "}
+        </div>
       </div>
-      <div className="search-container">
+      {/* <div className="search-container">
         <input className="searchBox" type="text" />
         <i className="fa-solid fa-magnifying-glass"></i>
-      </div>
+      </div> */}
+      <form className="search-container" action="">
+        <input id="search-box" type="text" className="search-box" name="q" />
+        <label for="search-box">
+          <span className="fa-solid fa-magnifying-glass glyphicon glyphicon-search search-icon"></span>
+        </label>
+        <input type="submit" id="search-submit" />
+      </form>
       <div className="menu-container">
         <Link to={sellingUrl}>판매하기</Link>
 
         <span className="vertical-line2"></span>
         <Link to={myPageUrl}>내상점</Link>
         <span className="vertical-line2"></span>
-        <Link to="/">좋은톡</Link>
+        <Link to="/">톡</Link>
         <span className="vertical-line2"></span>
         <p
+          className="log"
           onClick={() => {
             setModalShow(!getAuthInfo.isTrue);
             getAuthInfo.isTrue ? logout() : setModalShow(true);

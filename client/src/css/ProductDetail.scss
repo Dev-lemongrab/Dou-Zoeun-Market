@@ -1,5 +1,15 @@
+button {
+}
+.jjim,
+.pay,
+.modify {
+  width: 60px;
+  height: 30px;
+  background-color: #d3d3d3;
+}
+
 .productDetail {
-  width: 60%;
+  width: 100%;
   margin: auto !important;
 }
 
@@ -28,12 +38,13 @@
 }
 
 .pTitle {
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 800;
 }
 
 .pPrice {
   font-size: 25px;
+  color: #6f6f6f;
 }
 
 .productState {

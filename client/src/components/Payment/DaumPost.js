@@ -17,11 +17,7 @@ const DaumPost = (props) => {
   const handleClose = () => {
     setModalIsOpen(false);
   };
-  /*
-    modalIsOpen={true}
-    setModalIsOpen={setModalIsOpen}
-    setAddress={setAddress}
-    */
+
   return (
     <Modal isOpen={modalIsOpen} onRequestClose={handleClose}>
       <Button onClick={handleClose} style={{ width: "100%" }}>

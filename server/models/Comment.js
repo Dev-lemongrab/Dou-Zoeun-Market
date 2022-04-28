@@ -14,6 +14,9 @@ const Comment = sequelize.define(
     content: {
       type: DataTypes.STRING(255),
     },
+      rate:{
+        type : DataTypes.INTEGER
+      }
   },
 
   //Model 옵션 정의

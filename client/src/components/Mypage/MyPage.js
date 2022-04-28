@@ -44,7 +44,7 @@ export default function MyPage() {
             <Product url={`mypage/favorite/${userId}`} />
           </Tab>
           <Tab eventKey="MyReview" title={`거래 후기 (${commentNum})`}>
-            {/*<Comment/>*/}
+            <Comment/>
           </Tab>
         </Tabs>
       </div>

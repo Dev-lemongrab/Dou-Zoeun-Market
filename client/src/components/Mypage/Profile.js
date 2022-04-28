@@ -39,6 +39,17 @@ export default function Profile() {
     setImg(res.data.img);
   },[]);
 
+
+  async function withdraw(){
+    if (window.confirm("탈퇴하시겠습니까?")) {
+      await axios.delete(`${process.env.REACT_APP_BASE_URL}/mypage/withdraw/${userId}`);
+      alert("탈퇴되었습니다.");
+      window.location.href="http://localhost/3000";
+    } else {
+      alert("취소합니다.");
+    }
+  };
+
   return (
     <div className="profile">
       <img
@@ -84,11 +95,9 @@ export default function Profile() {
         </div>
       </div>
 
-      <Link to="/withdraw">
-        <button type="button" className="btn btn-danger">
+        <button type="button" className="btn btn-danger" onClick={withdraw}>
           회원탈퇴
         </button>
-      </Link>
     </div>
   );
 }

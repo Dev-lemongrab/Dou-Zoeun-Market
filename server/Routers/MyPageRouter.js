@@ -14,8 +14,7 @@ MyPageRouter.get("/product/:userId", async (req, res) => {
   const data = await Product.findAll({
       include:[{
           model:User,
-          required:true,
-          where : {idx : userId}
+          required:true
         }, {
           model: ProductImg,
           attributes: ["imgUrl"],
@@ -23,7 +22,8 @@ MyPageRouter.get("/product/:userId", async (req, res) => {
         }
       ],
       limit:4,
-      offset:page
+      offset:page,
+    where : {seller : userId}
   });
   res.json(data);
 });
@@ -63,8 +63,6 @@ MyPageRouter.post("/img/:userId", async (req, res) => {
 
 MyPageRouter.get("/profile/:userId", async (req, res) => {
     const {userId} = req.params;
-    console.log("USER ID>>>>>>>>>>>");
-    console.log(userId);
     const data = await User.findOne({
         attributes:["img", "nickName", "rate"],
         where:{idx : userId}
@@ -102,16 +100,37 @@ MyPageRouter.get("/num/:userId",
     },
     async (req, res, next) => {
         const tmp = req.data;
+        const {userId} = req.params;
         const cNum = await Comment.findAndCountAll({
-            include : [{
-                model:User,
-                required: true,
-                where : {idx : 1}
-            }]
+            where : {receiver: 18}
         });
         res.json([tmp[0], tmp[1], cNum.count]);
     }
 );
 
+MyPageRouter.get("/comments/:userId", async (req, res) => {
+   const {userId} = req.params;
+   const data = await Comment.findAll({
+       include : [{
+           model : Product,
+           required : true,
+       }],
+    where : {receiver : userId}
+   });
+   res.json(data);
+});
+
+MyPageRouter.delete("/withdraw/:userId", async (req, res) => {
+    const {userId} = req.params;
+    const data = await User.destroy({
+        where : {idx : userId}
+    });
+    req.logout();
+    req.session.destroy(() => {
+        res.clearCookie("connect.sid");
+        res.clearCookie("authCookie");
+    });
+    //res.redirect(process.env.CLIENT_URL_PORT);
+});
 
 export default MyPageRouter;

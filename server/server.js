@@ -30,6 +30,7 @@ app.use(
     saveUninitialized: true,
   })
 );
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -37,8 +38,9 @@ passport.serializeUser(function (user, done) {
   console.log("passport session save: ", user);
   done(null, user);
 });
-
+// 유저의 아이디만 저장하고 유저의 아이디를 통해서 deserialize할때는 DB에서 뺴온다.
 passport.deserializeUser(function (id, done) {
+  //디비에서 user.findOne()
   console.log("passport session get id: ", id);
   done(null, id);
 });

@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  min-height: 200px;
+  position: relative;
+}
+
+.btn-float {
+  width: 54px;
+  height: 54px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background-color: #323c48;
+  border-radius: 100%;
+  box-shadow: 0px 3px 12.48px 0.52px rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-size: 25pt; /*Trocar por ícone*/
+
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.btn-float::after {
+  display: block;
+  content: "+";
+  transition: transform 0.2s;
+}
+
+/*Remove o pontilhado do botão no firefox*/
+.btn-float::-moz-focus-inner {
+  outline: 0;
+  border: 0;
+}
+
+.btn-float--active::after {
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+.menu-float {
+  list-style: none;
+  min-width: 185px;
+  visibility: visible;
+  transform-origin: bottom right;
+  transition: transform, opacity, visibility;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+}
+
+.menu-float--hidden {
+  -webkit-transform: translateY(45%);
+  -moz-transform: translateY(45%);
+  -ms-transform: translateY(45%);
+  -o-transform: translateY(45%);
+  transform: translateY(45%);
+  transform: scale3d(0.5, 0.5, 0.5);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.menu-float__item {
+  margin-bottom: 30px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  visibility: inherit;
+}
+
+.menu-float__icon {
+  width: 42px;
+  height: 42px;
+  background-color: #323c48;
+  border-radius: 50%;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-float__icon::after {
+  content: "";
+  background-color: #c3c3c3;
+  width: 15px;
+  height: 15px;
+}
+
+.menu-float__text {
+  /*text-decoration: none;*/
+  /*color: rgba(255, 255, 255, 0.06);*/
+  color: #fff;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 6px 16px;
+  background-color: #323c48;
+  border-radius: 20px;
+}

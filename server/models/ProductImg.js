@@ -14,6 +14,9 @@ const ProductImg = sequelize.define(
     imgUrl: {
       type: DataTypes.STRING(10000),
     },
+      favoriteId:{
+        type: DataTypes.INTEGER
+      }
   },
 
   //Model 옵션 정의

@@ -10,7 +10,6 @@ function QnA({ id }) {
   const [text, setText] = useState("");
   const [qnacontent, setQnacontent] = useState("");
   const [contentlist, setContentlist] = useState([]);
-  const [check, setCheck] = useState("");
 
   const onReset = () => {
     setText("");
@@ -69,8 +68,6 @@ function QnA({ id }) {
     getQna();
   }, [id]);
 
-  console.log(getAuthInfo.user.idx);
-
   return (
     <div>
       <div className="qnaform">
@@ -101,10 +98,13 @@ function QnA({ id }) {
         {contentlist &&
           contentlist.map((item, id) => {
             return (
-              <div>
+              <div key={id}>
                 <div className="qnacontent">
-                  <div key={id}>
-                    {getAuthInfo.user.nickName}: {item.content}
+                  <div>
+                    {item.writer === getAuthInfo.user.idx
+                      ? getAuthInfo.user.nickName
+                      : "익명의 질문자"}
+                    : {item.content}
                   </div>
                   <div>
                     {item.writer ? (

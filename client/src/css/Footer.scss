@@ -1,7 +1,8 @@
 footer {
-  font-family: "AppleSDGothicNeoH";
+  width: 100%;
+  font-family: "AppleSDGothicNeoL";
   padding: 1.5%;
-  background-color: gray;
+  background-color: rgb(222, 222, 222);
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -10,16 +11,30 @@ footer {
   width: 50% !important;
 }
 .rightc {
+  position: relative;
   padding-right: 25%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-.fa-brands {
-  font-size: 10px;
-  margin-left: 10px;
-  margin-top: 10px;
+
+  .address {
+    width: 100%;
+    text-align: right;
+    font-size: 10px;
+    font-weight: bolder;
+  }
+  div {
+    display: flex;
+    padding: 0;
+  }
+  .fa-brands {
+    margin-right: 10px;
+    width: 100%;
+    font-size: 20px;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
 }
 
 .company {
@@ -33,11 +48,6 @@ footer {
   font-weight: 900;
 }
 
-.address {
-  font-size: 10px;
-  font-weight: bolder;
-}
-
 .info {
   display: flex;
   align-items: center;
@@ -45,9 +55,11 @@ footer {
 }
 
 .underline {
+  width: 80px;
+  text-align: right;
+  padding-right: 2%;
   text-decoration: underline;
-  margin-left: 30px;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
 }
 
 .vertical-line {
@@ -59,7 +71,7 @@ footer {
 .left {
   font-size: 11px;
   margin-right: 0 !important;
-  margin-left: 15% !important;
+  margin-left: 23% !important;
 
   div {
     line-height: 1.6;

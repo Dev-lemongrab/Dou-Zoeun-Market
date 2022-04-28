@@ -1,28 +1,46 @@
 header {
-  font-family: "AppleSDGothicNeoH";
+  font-family: "AppleSDGothicNeoL";
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin-top: 0px;
-  background-color: #3c3c3c;
-  color: rgb(240, 228, 228);
-  padding: 10px 10px;
+  background-color: #555555;
+  color: rgb(230, 230, 230);
+  padding: 10px 20px;
   margin-bottom: 20px;
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
   a {
     text-decoration: none;
     font-size: 11px;
-    color: rgb(240, 228, 228);
+    color: rgb(230, 230, 230);
+    &:hover {
+      color: rgb(255, 255, 255);
+    }
   }
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-}
-
-.logo {
-  width: 30px;
-  margin-right: 15px;
+  .theme {
+    width: 160px;
+  }
+  .log {
+    color: rgb(230, 230, 230);
+    &:hover {
+      color: rgb(255, 255, 255);
+    }
+  }
+  .Name {
+    font-size: 1.1rem;
+    width: 100%;
+    &:hover {
+      color: rgb(255, 255, 255);
+    }
+  }
+  .logo {
+    width: 1.8rem;
+    margin-right: 15px;
+  }
 }
 
 .search-container {
@@ -46,10 +64,6 @@ header {
     padding: 0px;
     cursor: pointer;
   }
-}
-.theme {
-  font-size: 18px;
-  font-weight: bold;
 }
 
 .searchBox {

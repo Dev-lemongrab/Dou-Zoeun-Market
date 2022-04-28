@@ -4,6 +4,7 @@ import ProductItem from "./ProductItem";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import useFetch from "../../hooks/useFetch";
+import "../../css/Product.scss";
 
 const Product = (props) => {
   const [page, setPage] = useState(1);
@@ -35,11 +36,11 @@ const Product = (props) => {
         {list.map((deliver) => (
           <Col sm={3} key={deliver.idx}>
             <Card
-              style={{ width: "10rem", height: "15rem", marginBottom: "2rem" }}
+              style={{ width: "10rem", height: "18rem", marginBottom: "2rem" }}
             >
-              <Card.Body>
+              <Card.Body className="content">
                 <Card.Title>
-                  <ProductItem deliver={deliver} urlName = {props.url} />
+                  <ProductItem deliver={deliver} urlName={props.url} />
                 </Card.Title>
               </Card.Body>
             </Card>

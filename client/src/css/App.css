@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "AppleSDGothicNeoH";
+  src: url("../fonts/AppleSDGothicNeoH.ttf");
+}
+@font-face {
+  font-family: "AppleSDGothicNeoL";
+  src: url("../fonts/AppleSDGothicNeoL.ttf");
+}
+
+.DouZoeun {
+  font-family: AppleSDGothicNeoL;
+}

@@ -2,26 +2,25 @@ import React, { useEffect } from "react";
 import "../../css/Location.scss";
 
 const { kakao } = window;
-
 const Location = ({ deliver }) => {
-  const { locationX, locationY } = deliver;
+  const { address } = deliver;
   //console.log(locationX);
 
   useEffect(() => {
+    var geocoder = new kakao.maps.services.Geocoder();
     const container = document.getElementById("map");
-    const options = {
-      center: new kakao.maps.LatLng(locationX, locationY),
-      level: 3,
-    };
-
-    const map = new kakao.maps.Map(container, options);
-    const markerPosition = new kakao.maps.LatLng(locationX, locationY);
-    const marker = new kakao.maps.Marker({
-      position: markerPosition,
-      text: "거래 장소",
+    geocoder.addressSearch(deliver.address, function (result, status) {
+      if (status === kakao.maps.services.Status.OK) {
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+        const map = new kakao.maps.Map(container);
+        const marker = new kakao.maps.Marker({
+          position: coords,
+          text: "거래 장소",
+        });
+        marker.setMap(map);
+      }
     });
-    marker.setMap(map);
-  });
+  }, []);
 
   return (
     <div>
